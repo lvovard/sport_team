@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.lvovard.sportteam.MainActivity" >
+
+        <item
+        android:id="@+id/action_help"
+        android:icon="@drawable/ic_live_help_white_24dp"
+        android:title="aide"
+        android:showAsAction="ifRoom" />
+
+</menu>

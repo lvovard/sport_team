@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sportteam.lavovard.sportteam">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".BothModeListClubActivity"
+            android:label="@string/title_activity_club"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".UserListCategoryActivity"
+            android:label="@string/title_activity_category"
+            android:launchMode="singleTop"
+            android:parentActivityName=".BothModeListClubActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ClubActivity" />
+        </activity>
+        <activity
+            android:name=".UserListEquipeActivity"
+            android:label="@string/title_activity_equipe"
+            android:launchMode="singleTop"
+            android:parentActivityName=".UserListCategoryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CategoryActivity" />
+        </activity>
+        <activity
+            android:name=".UserListChoiceActivity"
+            android:label="@string/title_activity_choice"
+            android:launchMode="singleTop"
+            android:parentActivityName=".UserListEquipeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EquipeActivity" />
+        </activity>
+        <activity
+            android:name=".UserListConvocationActivity"
+            android:label="@string/title_activity_convocation"
+            android:launchMode="singleTop"
+            android:parentActivityName=".UserListChoiceActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChoiceActivity" />
+        </activity>
+        <activity
+            android:name=".UserConvocDetailsActivity"
+            android:label="@string/title_activity_convocdetails"
+            android:launchMode="singleTop"
+            android:parentActivityName=".UserListConvocationActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ConvocationActivity" />
+        </activity>
+        <activity
+            android:name=".UserListResultatActivity"
+            android:label="@string/title_activity_resultat"
+            android:launchMode="singleTop"
+            android:parentActivityName=".UserListChoiceActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChoiceActivity" />
+        </activity>
+        <activity
+            android:name=".UserResultDetailsActivity"
+            android:label="@string/title_activity_resultdetails"
+            android:launchMode="singleTop"
+            android:parentActivityName=".UserListResultatActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ResultatActivity" />
+        </activity>
+        <activity
+            android:name=".UserListInfoActivity"
+            android:label="@string/title_activity_info"
+            android:launchMode="singleTop"
+            android:parentActivityName=".UserListChoiceActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChoiceActivity" />
+        </activity>
+        <activity
+            android:name=".UserInfoDetailsActivity"
+            android:label="@string/title_activity_infodetails"
+            android:launchMode="singleTop"
+            android:parentActivityName=".UserListInfoActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".InfoActivity" />
+        </activity>
+
+        <service android:name=".NotifMyTestService" />
+
+        <receiver android:name=".NotifMyBroadcastReceiver" >
+        </receiver>
+        <receiver android:name=".NotifBootBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".ManagementActivity"
+            android:label="@string/title_activity_management" >
+        </activity>
+        <activity
+            android:name=".AdminCreateClubActivity"
+            android:label="@string/title_activity_create_club"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name=".AdminClubActivity"
+            android:label="@string/title_activity_admin_club" >
+        </activity>
+        <activity
+            android:name=".AdminPwdActivity"
+            android:label="@string/title_activity_admin_pwd" >
+        </activity>
+        <activity
+            android:name=".AdminChangePwdActivity"
+            android:label="@string/title_activity_admin_change_pwd" >
+        </activity>
+        <activity
+            android:name=".AdminCatActivity"
+            android:label="@string/title_activity_admin_cat" >
+        </activity>
+        <activity
+            android:name=".AdminChangeCatActivity"
+            android:label="@string/title_activity_admin_add_cat" >
+        </activity>
+        <activity
+            android:name=".BothModeAddClubActivity"
+            android:label="@string/title_activity_user_add_club" >
+        </activity>
+        <activity
+            android:name=".AdminWayToAddClubActivity"
+            android:label="@string/title_activity_admin_way_to_add_club" >
+        </activity>
+        <activity
+            android:name=".AdminPeopleActivity"
+            android:label="@string/title_activity_admin_people" >
+        </activity>
+        <activity
+            android:name=".AdminChangePeopleActivity"
+            android:label="@string/title_activity_admin_change_people" >
+        </activity>
+        <activity
+            android:name=".AdminConvocationActivity"
+            android:label="@string/title_activity_admin_convocation" >
+        </activity>
+        <activity
+            android:name=".AdminChangeConvocationActivity"
+            android:label="@string/title_activity_admin_change_convocation" >
+        </activity>
+        <activity
+            android:name=".AdminResultatActivity"
+            android:label="@string/title_activity_admin_resultat" >
+        </activity>
+        <activity
+            android:name=".AdminChangeResultatActivity"
+            android:label="@string/title_activity_admin_change_resultat" >
+        </activity>
+        <activity
+            android:name=".AdminInfoActivity"
+            android:label="@string/title_activity_admin_info" >
+        </activity>
+        <activity
+            android:name=".AdminChangeInfoActivity"
+            android:label="@string/title_activity_admin_change_info" >
+        </activity>
+        <activity
+            android:name=".TestActivity"
+            android:label="@string/title_activity_test" >
+        </activity>
+        <activity
+            android:name=".StatisticListActivity"
+            android:label="@string/title_statistic_list" >
+        </activity>
+        <activity
+            android:name=".StatisticDetailActivity"
+            android:label="@string/title_statistic_detail"
+            android:parentActivityName=".StatisticListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sportteam.lavovard.sportteam.StatisticListActivity" />
+        </activity>
+    </application>
+
+</manifest>

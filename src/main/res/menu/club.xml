@@ -1,0 +1,31 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.lvovard.sportteam.ClubActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+        
+        
+   <item
+        android:id="@+id/action_remove"
+        android:icon="@drawable/ic_indeterminate_check_box_white_24dp"
+        android:title="arrêter le suivi d'un club"
+        android:showAsAction="ifRoom" />
+            
+             
+    <item
+        android:id="@+id/action_add"
+        android:icon="@drawable/ic_add_box_white_24dp"
+        android:title="action_add"
+        android:showAsAction="ifRoom" />
+        
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/ic_home_white_24dp"
+        android:title="@string/home"
+        android:showAsAction="ifRoom" />
+        
+
+        
+
+
+</menu>
