@@ -25,8 +25,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
-public class AdminChangePeopleActivity extends Activity
+public class AdminChangePeopleActivity extends AppCompatActivity
 {
   String mode;
   protected TextView textcat;
@@ -94,7 +95,8 @@ public class AdminChangePeopleActivity extends Activity
       mode = i.getStringExtra("mode");
     }
     
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_person_white_24dp);
     actionBar.setTitle("Gestion des joueurs / dirigeants");

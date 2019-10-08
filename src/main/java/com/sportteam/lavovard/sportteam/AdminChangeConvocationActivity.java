@@ -38,8 +38,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
-public class AdminChangeConvocationActivity extends Activity
+
+public class AdminChangeConvocationActivity extends AppCompatActivity
 {
   String mode;
   protected Spinner spinner_cat;
@@ -169,7 +171,8 @@ public class AdminChangeConvocationActivity extends Activity
       mode = i.getStringExtra("mode");
     }
     
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_event_white_24dp);
     actionBar.setTitle("Gestion des convocations");

@@ -15,6 +15,8 @@ import android.graphics.Color;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
+import android.os.Build;
+import android.graphics.BitmapFactory;
 
 public class NotifMyBroadcastReceiver extends BroadcastReceiver {
   SQLiteDatabase db;
@@ -22,8 +24,8 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
   public void onReceive(Context context, Intent intent) 
   {
     /////
-    //log.i("myApp", "fonction appelee par timer - check DB...");
-    //log.i("myApp", "get all DB connexion records");
+    Log.i("myApp", "fonction appelee par timer - check DB...");
+    Log.i("myApp", "get all DB connexion records");
     
     List<Club> clublist = Global.ConnexionGetClub(context);
     
@@ -103,27 +105,38 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
           notificationIntent.putExtra("state","ADD_CAT");
           //notificationIntent.putExtra("password",pwd);
           PendingIntent contentIntent = PendingIntent.getActivity(mcontext,(int) (Math.random() * 100), notificationIntent,PendingIntent.FLAG_UPDATE_CURRENT);
-          NotificationCompat.Builder mBuilder =
-              new NotificationCompat.Builder(mcontext)
-              .setTicker(this.club.nom+" - nouvelle catégorie "+c.nom)
-              .setSmallIcon(R.drawable.ic_launcher)
-              .setContentTitle(this.club.nom+" - nouvelle catégorie "+c.nom)
-              .setContentText("suivez la nouvelle catégorie "+c.nom)
-          .setStyle(new NotificationCompat.BigTextStyle().bigText("Une nouvelle catégorie "+c.nom+" a été créée - cliquez ici pour l'ajouter à vos préférences ou faites glisser pour ignorer"));
-  
-          mBuilder.setContentIntent(contentIntent);
-          mBuilder.setDefaults(Notification.DEFAULT_SOUND);
-          mBuilder.setAutoCancel(true);
-          mBuilder.setLights(Color.GREEN, 1, 1); // will blink
-          NotificationManager mNotificationManager =(NotificationManager) mcontext.getSystemService(Context.NOTIFICATION_SERVICE);
-          mNotificationManager.notify(Global.NOTIF_OFFSET_CAT+Integer.parseInt(c.id_cat), mBuilder.build());
+                    String title = this.club.nom + " - nouvelle catégorie " + c.nom;
+                    String text = "suivez la nouvelle catégorie " + c.nom;
+                    String tickerText = this.club.nom + " - nouvelle catégorie " + c.nom;
+                    if (Build.VERSION.SDK_INT < 26)
+                    {
+                        NotificationCompat.Builder mBuilder =
+                                new NotificationCompat.Builder(mcontext)
+                                        .setTicker(tickerText)
+                                        .setSmallIcon(R.drawable.ic_launcher)
+                                        .setContentTitle(title)
+                                        .setContentText(text)
+                                        .setStyle(new NotificationCompat.BigTextStyle().bigText("Une nouvelle catégorie " + c.nom + " a été créée - cliquez ici pour l'ajouter à vos préférences ou faites glisser pour ignorer"));
+
+                        mBuilder.setContentIntent(contentIntent);
+                        mBuilder.setDefaults(Notification.DEFAULT_SOUND);
+                        mBuilder.setAutoCancel(true);
+                        mBuilder.setLights(Color.GREEN, 1, 1); // will blink
+                        NotificationManager mNotificationManager = (NotificationManager) mcontext.getSystemService(Context.NOTIFICATION_SERVICE);
+                        mNotificationManager.notify(Global.NOTIF_OFFSET_CAT + Integer.parseInt(c.id_cat), mBuilder.build());
+                    }
+                    else
+                    {
+                        Log.i("myApp", "sdk > 22 for cat...");
+                        NotificationHelper notificationHelper = new NotificationHelper(mcontext);
+                        notificationHelper.notify(Global.NOTIF_OFFSET_CAT + Integer.parseInt(c.id_cat), false, title, text, contentIntent, tickerText);
+                    }
+
+                }
+            }
         }
+
     }
-      
-    }
-  }
-  
-  
 
   
   private class getConvocationDateNotifMain extends GetLastConvocationDate
@@ -160,6 +173,7 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
             String longconvoctext = "la convoc est dispo pour le match contre "+c.adversaire;
             String shortconvoctext = "convoc contre "+c.adversaire+" ajoutee";
             String tickertext = club.nom+"-"+c.equipe +" nouvelle convocation contre "+c.adversaire;
+            String title = club.nom + "-" + c.equipe;
             if (c.state.contentEquals("modified"))
             {
               longconvoctext = "la convoc pour le match contre "+c.adversaire+" a ete modifiée";
@@ -177,11 +191,13 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
             notificationIntent.putExtra("convid",c.id_convoc);
             notificationIntent.putExtra("bkg",Global.getbkgpicture(this.club.sport));
             PendingIntent contentIntent = PendingIntent.getActivity(mContext,(int) (Math.random() * 100), notificationIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+            if (Build.VERSION.SDK_INT < 26)
+            {
             NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(mContext)
                 .setTicker(tickertext)
                 .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle(club.nom+"-"+c.equipe)
+                .setContentTitle(title)
                 .setContentText(shortconvoctext)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(longconvoctext));
             mBuilder.setContentIntent(contentIntent);
@@ -190,10 +206,15 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
             mBuilder.setLights(Color.GREEN, 1, 1); // will blink
             NotificationManager mNotificationManager =(NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.notify(Global.NOTIF_OFFSET_CONVOC+Integer.parseInt(c.id_convoc), mBuilder.build());
-          }
+                        } else {
+                            Log.i("myApp", "sdk > 22 for convoc...");
+                            NotificationHelper notificationHelper = new NotificationHelper(mContext);
+                            notificationHelper.notify(Global.NOTIF_OFFSET_CONVOC + Integer.parseInt(c.id_convoc), false, title, shortconvoctext, contentIntent, tickertext);
+                        }
         }
       }
     }
+}
 
   }
   
@@ -241,12 +262,16 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
             notificationIntent.putExtra("bkg",Global.getbkgpicture(this.club.sport));
             notificationIntent.putExtra("resultid",r.id_resultat);
             PendingIntent contentIntent = PendingIntent.getActivity(mContext,(int) (Math.random() * 100), notificationIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+                        String title = club.nom + "-" + r.id_equipe;
+                        String text = "resultat contre " + r.adversaire;
+                        String tickerText = club.nom + "-" + r.id_equipe + " resultat contre " + r.adversaire;
+                        if (Build.VERSION.SDK_INT < 26) {
             NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(mContext)
-                .setTicker(club.nom+"-"+r.id_equipe+" resultat contre "+r.adversaire)
+                .setTicker(tickerText)
                 .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle(club.nom+"-"+r.id_equipe)
-                .setContentText("resultat contre "+r.adversaire)
+                .setContentTitle(title)
+                .setContentText(text)
             .setStyle(new NotificationCompat.BigTextStyle().bigText("le resultat est dispo pour le match contre "+r.adversaire));
             mBuilder.setContentIntent(contentIntent);
             mBuilder.setDefaults(Notification.DEFAULT_SOUND);
@@ -255,9 +280,16 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
             NotificationManager mNotificationManager =(NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.notify(Global.NOTIF_OFFSET_RESULT+Integer.parseInt(r.id_resultat), mBuilder.build());
           }
+                        else
+                        {
+                            Log.i("myApp", "sdk > 22 for result...");
+                            NotificationHelper notificationHelper = new NotificationHelper(mContext);
+                            notificationHelper.notify(Global.NOTIF_OFFSET_RESULT + Integer.parseInt(r.id_resultat), false, title, text, contentIntent, tickerText);
         }
       }
     }
+            }
+        }
 
   }
   
@@ -328,6 +360,8 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
             notificationIntent.putExtra("bkg",Global.getbkgpicture(this.club.sport));
             notificationIntent.putExtra("infoid",inf.id_info);
             PendingIntent contentIntent = PendingIntent.getActivity(mContext,(int) (Math.random() * 100), notificationIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+                        if (Build.VERSION.SDK_INT < 26)
+                        {
             NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(mContext)
                 .setTicker(tickertxt)
@@ -342,9 +376,16 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
             NotificationManager mNotificationManager =(NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.notify(Global.NOTIF_OFFSET_INFO+Integer.parseInt(inf.id_info), mBuilder.build());
           }
-        }
+                        else
+                        {
+                            Log.i("myApp", "sdk > 22 for info...");
+                            NotificationHelper notificationHelper = new NotificationHelper(mContext);
+                            notificationHelper.notify(Global.NOTIF_OFFSET_INFO + Integer.parseInt(inf.id_info), false, title, shorttext, contentIntent, tickertxt );
+                        }
       }
     }
+            }
+        }
 
   }
   
@@ -404,6 +445,8 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
           {
             catbuffer = catbuffer + cat.nom + ";" ;
           }
+                    if (Build.VERSION.SDK_INT < 26)
+                    {
           Intent notificationIntent = new Intent(mContext,BothModeAddClubActivity.class);
           notificationIntent.putExtra("clubid",this.club.id_club);
           notificationIntent.putExtra("club",this.club.nom);
@@ -429,9 +472,18 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
           NotificationManager mNotificationManager =(NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
           mNotificationManager.notify(Global.NOTIF_OFFSET_CLUB_PWD_USER+Integer.parseInt(this.club.id_club), mBuilder.build());
         }
-        if (password_admin_changed)
-        {
-          Global.ConnexionRemoveAdminClub(mContext, club.id_club);
+                    else
+                    {
+                        Log.i("myApp", "sdk > 22 for user passswd...");
+                        //NotificationHelper notificationHelper = new NotificationHelper(mContext);
+                        //notificationHelper.notify(1, false, "My title", "My content" );
+                    }
+                }
+                if (password_admin_changed) {
+                    Log.i("myApp", "new admin passwd detected...");
+                    Global.ConnexionRemoveAdminClub(mContext, club.id_club);
+                    if (Build.VERSION.SDK_INT < 26)
+                    {
           Intent notificationIntent = new Intent(mContext,BothModeAddClubActivity.class);
           notificationIntent.putExtra("clubid",this.club.id_club);
           notificationIntent.putExtra("club",this.club.nom);
@@ -456,6 +508,13 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
           NotificationManager mNotificationManager =(NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
           mNotificationManager.notify(Global.NOTIF_OFFSET_CLUB_PWD_ADMIN+Integer.parseInt(this.club.id_club), mBuilder.build());
         }
+                    else
+                    {
+                        Log.i("myApp", "sdk > 22 for admin passswd...");
+                        //NotificationHelper notificationHelper = new NotificationHelper(mContext);
+                        //notificationHelper.notify(1, false, "My title", "My content" );
+                    }
+                }
         
         //send notification to the user
         

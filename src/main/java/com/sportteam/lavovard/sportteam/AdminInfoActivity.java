@@ -14,8 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
 
-public class AdminInfoActivity extends Activity
+public class AdminInfoActivity extends AppCompatActivity
 {
   protected Button btnAddInfo;
   protected Button btnModifyInfo;
@@ -43,7 +44,8 @@ public class AdminInfoActivity extends Activity
     super.onResume();
     adminclub = Global.getCurrentAdminClub(ctx);
     setContentView(R.layout.activity_admin_info);
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_info_white_24dp);
     actionBar.setTitle("Gestion des informations/evenements");

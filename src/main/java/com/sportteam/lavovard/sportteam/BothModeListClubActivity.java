@@ -67,11 +67,11 @@ public class BothModeListClubActivity extends AppCompatActivity
     getWindow().setBackgroundDrawableResource(R.drawable.gazon);
     //ActionBar actionBar = getActionBar();
     //ActionBar actionBar = getSupportActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
+    actionBar.setDisplayHomeAsUpEnabled(true);
 
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-    getSupportActionBar().setTitle("SportTeam");
-    getSupportActionBar().setSubtitle("Clubs");
+    actionBar.setTitle("SportTeam");
+    actionBar.setSubtitle("Clubs");
     
     Intent i=getIntent();
     if (! TextUtils.isEmpty(i.getStringExtra("mode"))) {
@@ -84,12 +84,12 @@ public class BothModeListClubActivity extends AppCompatActivity
     if (mode.contentEquals("user"))
     {
       clublist = Global.ConnexionGetUserClub(ctx);
-      getSupportActionBar().setIcon(R.drawable.ic_visibility_white_24dp);
+      actionBar.setIcon(R.drawable.ic_visibility_white_24dp);
     }
     if (mode.contentEquals("admin"))
     {
       clublist = Global.ConnexionGetAdminClub(ctx);
-      getSupportActionBar().setIcon(R.drawable.ic_settings_white_24dp);
+      actionBar.setIcon(R.drawable.ic_settings_white_24dp);
     }
     
     //if user has recorder at least one club

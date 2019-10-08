@@ -93,13 +93,13 @@ public class BothModeAddClubActivity extends AppCompatActivity {
     super.onResume();
     getWindow().setBackgroundDrawableResource(R.drawable.gazon);
     setContentView(R.layout.activity_user_add_club);
-
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setDisplayShowHomeEnabled(true);
-    getSupportActionBar().setHomeButtonEnabled(true);
-    getSupportActionBar().setDisplayShowHomeEnabled(true);
-    getSupportActionBar().setDisplayUseLogoEnabled(true);
-    getSupportActionBar().setTitle("SportTeam");
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
+    actionBar.setDisplayHomeAsUpEnabled(true);
+    actionBar.setDisplayShowHomeEnabled(true);
+    actionBar.setHomeButtonEnabled(true);
+    actionBar.setDisplayShowHomeEnabled(true);
+    actionBar.setDisplayUseLogoEnabled(true);
+    actionBar.setTitle("SportTeam");
     progressBar = new ProgressDialog(this);
     progressBar.setCancelable(true);
     progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -157,14 +157,14 @@ public class BothModeAddClubActivity extends AppCompatActivity {
       spinner_cat.setVisibility(View.GONE);
       textcat.setVisibility(View.GONE);
       textpwd.setText("Saisissez le mot de passe admin de votre club");
-      getSupportActionBar().setSubtitle("Gerer un club");
-      getSupportActionBar().setIcon(R.drawable.ic_settings_white_24dp);
+      actionBar.setSubtitle("Gerer un club");
+      actionBar.setIcon(R.drawable.ic_settings_white_24dp);
     }
     else
     {
       textpwd.setText("Saisissez le mot de passe utilisateur de votre club");
-      getSupportActionBar().setSubtitle("Suivre un club");
-      getSupportActionBar().setLogo(R.drawable.ic_visibility_white_24dp);
+      actionBar.setSubtitle("Suivre un club");
+      actionBar.setLogo(R.drawable.ic_visibility_white_24dp);
     }
 
     addListenerOnButton();

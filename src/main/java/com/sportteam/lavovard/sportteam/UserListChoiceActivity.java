@@ -20,8 +20,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.support.v7.app.AppCompatActivity;
 
-public class UserListChoiceActivity extends Activity
+public class UserListChoiceActivity extends AppCompatActivity
 {
   
   static List<String> listechoice = new ArrayList<String>();
@@ -51,7 +52,8 @@ public class UserListChoiceActivity extends Activity
     LinearLayout layout = (LinearLayout) findViewById(R.id.linlayout);
     layout.setOrientation(LinearLayout.VERTICAL);
     
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setTitle(userclub.nom+"/"+Global.getCurrentEquipe(ctx));
     actionBar.setSubtitle("Choix");

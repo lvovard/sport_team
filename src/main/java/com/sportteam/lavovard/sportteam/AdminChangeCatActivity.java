@@ -23,8 +23,9 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
-public class AdminChangeCatActivity extends Activity
+public class AdminChangeCatActivity extends AppCompatActivity
 {
 
   String mode;
@@ -79,7 +80,8 @@ public class AdminChangeCatActivity extends Activity
     if (! TextUtils.isEmpty(i.getStringExtra("mode"))) {
       mode = i.getStringExtra("mode");
     }
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_group_white_24dp);
     actionBar.setTitle("Gestion des catégories / équipes");

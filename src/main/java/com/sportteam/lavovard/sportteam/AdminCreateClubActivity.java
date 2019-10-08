@@ -25,8 +25,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
-public class AdminCreateClubActivity extends Activity
+public class AdminCreateClubActivity extends AppCompatActivity
 {
   
   protected Spinner spinner_sport ;
@@ -72,7 +73,8 @@ public class AdminCreateClubActivity extends Activity
   {
     super.onResume();
     setContentView(R.layout.activity_create_club);
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_fiber_new_white_24dp);
     actionBar.setTitle("Création de club");

@@ -30,8 +30,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
-public class UserListCategoryActivity extends Activity
+public class UserListCategoryActivity extends AppCompatActivity
 {
   
   List<Categorie> listcatasked;
@@ -152,8 +153,13 @@ public class UserListCategoryActivity extends Activity
         }
       });
     }
-    ActionBar actionBar = getActionBar();
+
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
+    actionBar.setDisplayShowHomeEnabled(true);
+    actionBar.setHomeButtonEnabled(true);
+    actionBar.setDisplayShowHomeEnabled(true);
+    actionBar.setDisplayUseLogoEnabled(true);
     actionBar.setIcon(R.drawable.ic_group_white_24dp);
     actionBar.setTitle(userclub.nom);
     actionBar.setSubtitle("Categories");

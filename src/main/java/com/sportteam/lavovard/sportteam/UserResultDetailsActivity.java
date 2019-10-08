@@ -35,8 +35,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
 
-public class UserResultDetailsActivity extends Activity 
+public class UserResultDetailsActivity extends AppCompatActivity
 {
   
   LinearLayout layout;
@@ -68,7 +69,8 @@ public class UserResultDetailsActivity extends Activity
     Resultat result = UserListResultatActivity.resultlist.get(UserListResultatActivity.resultselected);
     sharetitle = result.date_match + " - Résultat "+ Global.getCurrentEquipe(ctx) + " contre "+result.adversaire + " ("+result.lieu+")";
     setTitle(userclub.nom+"/"+Global.getCurrentEquipe(ctx)+"\r\n"+Global.getCurrentChoice(ctx));
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_looks_icon_two_black_24dp);
     actionBar.setTitle(userclub.nom+"/"+Global.getCurrentEquipe(ctx));
@@ -100,7 +102,7 @@ public class UserResultDetailsActivity extends Activity
     tv.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
     tv.setText(Html.fromHtml(detail+score+detailmatch));
     tv.setMovementMethod(new ScrollingMovementMethod());
-    tv.setTypeface(null, Typeface.BOLD|Typeface.ITALIC);
+    tv.setTypeface(null, Typeface.BOLD_ITALIC);
     layout.addView(tv);
   }
 

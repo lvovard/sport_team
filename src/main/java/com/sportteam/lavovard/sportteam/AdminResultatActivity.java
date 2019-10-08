@@ -14,8 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
 
-public class AdminResultatActivity extends Activity
+public class AdminResultatActivity extends AppCompatActivity
 {
   protected Button btnAddRes;
   protected Button btnModifyRes;
@@ -43,7 +44,8 @@ public class AdminResultatActivity extends Activity
     super.onResume();
     adminclub = Global.getCurrentAdminClub(ctx);
     setContentView(R.layout.activity_admin_resultat);
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_looks_icon_two_black_24dp);
     actionBar.setTitle("Gestion des resultats");

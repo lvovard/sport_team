@@ -35,8 +35,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
 
-public class UserInfoDetailsActivity extends Activity {
+public class UserInfoDetailsActivity extends AppCompatActivity {
 
   LinearLayout layout;
   TextView tv;
@@ -67,7 +68,8 @@ public class UserInfoDetailsActivity extends Activity {
     layout.setOrientation(LinearLayout.VERTICAL);
     Info info = UserListInfoActivity.infolist.get(UserListInfoActivity.infoselected);
     setTitle(userclub.nom+"/"+Global.getCurrentEquipe(ctx)+"\r\n"+Global.getCurrentChoice(ctx));
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_info_white_24dp);
     actionBar.setTitle(userclub.nom+"/"+Global.getCurrentEquipe(ctx));
@@ -114,7 +116,7 @@ public class UserInfoDetailsActivity extends Activity {
     tv.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
     tv.setText(Html.fromHtml(dest+date+heure+objet+message));
     tv.setMovementMethod(new ScrollingMovementMethod());
-    tv.setTypeface(null, Typeface.BOLD|Typeface.ITALIC);
+    tv.setTypeface(null, Typeface.BOLD_ITALIC);
     layout.addView(tv);
   }
 

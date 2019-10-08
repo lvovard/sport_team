@@ -40,9 +40,9 @@ abstract class getPassword extends AsyncTask<String, Void, String>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      ////log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      ////log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -476,9 +476,9 @@ abstract class insertConvoc extends AsyncTask<Convocation, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -510,9 +510,9 @@ abstract class updateConvoc extends AsyncTask<Convocation, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -544,13 +544,13 @@ abstract class removeConvoc extends AsyncTask<String, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
-      if ( result.contains("delete passed") )
+      if ( result.contains("PASS") )
       {
         return true;
       }
@@ -579,9 +579,9 @@ abstract class insertResultat extends AsyncTask<Resultat, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -613,9 +613,9 @@ abstract class updateResultat extends AsyncTask<Resultat, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -647,9 +647,9 @@ abstract class removeResultat extends AsyncTask<String, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -682,9 +682,9 @@ abstract class insertInfo extends AsyncTask<Info, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -716,9 +716,9 @@ abstract class updateInfo extends AsyncTask<Info, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -750,13 +750,13 @@ abstract class removeInfo extends AsyncTask<String, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
-      if ( result.contains("delete passed") )
+      if ( result.contains("PASS") )
       {
         return true;
       }
@@ -786,9 +786,9 @@ abstract class getPerson extends AsyncTask<String, Void, List<Person>>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -837,15 +837,15 @@ abstract class GetResultat extends AsyncTask<String, Void, List<Resultat>>
     try 
     {
       link = Global.URL_SQL_DATABASE+"/getresult.php?id_equipe="+id_equipe+"&id_club="+param[2]; //+ data
-      //log.i("myApp", "link "+link);
+      //Log.i("myApp", "link "+link);
       URL url = new URL(link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if ( (result != null) && (!result.contains("No resultat found")) )
     {
@@ -902,9 +902,12 @@ abstract class GetInfo extends AsyncTask<String, Void, List<Info>>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
-    } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", result);
+    }
+    catch (Exception ex)
+    {
+
+      Log.i("myApp", "error="+ex);
     }
     if ( (result != null) && (!result.contains("No info found")) )
     {
@@ -1234,13 +1237,13 @@ abstract class insertCat extends AsyncTask<String, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
-      if ( result.contains("insert passed") )
+      if ( result.contains("PASS") )
       {
         return true;
       }
@@ -1272,13 +1275,13 @@ abstract class insertPerson extends AsyncTask<String, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
-      if ( result.contains("insert passed") )
+      if ( result.contains("PASS") )
       {
         return true;
       }
@@ -1306,13 +1309,13 @@ abstract class removePerson extends AsyncTask<String, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
-      if ( result.contains("insert passed") )
+      if ( result.contains("PASS") )
       {
         return true;
       }
@@ -1341,13 +1344,13 @@ abstract class removeCat extends AsyncTask<String, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
-      if ( result.contains("insert passed") )
+      if ( result.contains("PASS") )
       {
         return true;
       }
@@ -1376,13 +1379,13 @@ abstract class modifyCat extends AsyncTask<String, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
-      if ( result.contains("insert passed") )
+      if ( result.contains("PASS") )
       {
         return true;
       }
@@ -1425,13 +1428,13 @@ abstract class updatePwd extends AsyncTask<String, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
-      if ( result.contains("update passed") )
+      if ( result.contains("PASS") )
       {
         return true;
       }
@@ -1458,9 +1461,9 @@ abstract class insertCrash extends AsyncTask<String, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {

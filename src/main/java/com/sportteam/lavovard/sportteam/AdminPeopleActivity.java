@@ -14,8 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
 
-public class AdminPeopleActivity extends Activity
+public class AdminPeopleActivity extends AppCompatActivity
 {
   protected Button btnAddPeople;
   protected Button btnRemovePeople;
@@ -42,7 +43,8 @@ public class AdminPeopleActivity extends Activity
     super.onResume();
     adminclub = Global.getCurrentAdminClub(ctx);
     setContentView(R.layout.activity_admin_people);
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_person_white_24dp);
     actionBar.setTitle("Gestion des joueurs / dirigeants");

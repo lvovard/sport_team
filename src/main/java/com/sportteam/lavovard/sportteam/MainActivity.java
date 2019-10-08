@@ -110,7 +110,7 @@ public class MainActivity extends Activity {
       //log.i("myApp", "Reading alarm.txt ..." );
       while ((strLine = objBufferReader.readLine()) != null) 
       {
-        if (strLine.contains("ALARM=STARTED"))
+        if (strLine.contains("ALARM=STARTEDDD"))
         {
           start_alarm=false;
           break;

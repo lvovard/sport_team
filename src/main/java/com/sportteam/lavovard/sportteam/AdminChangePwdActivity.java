@@ -24,8 +24,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
-public class AdminChangePwdActivity extends Activity
+public class AdminChangePwdActivity extends AppCompatActivity
 {
   
   protected TextView textoldpwd;
@@ -66,7 +67,8 @@ public class AdminChangePwdActivity extends Activity
     super.onResume();
     adminclub = Global.getCurrentAdminClub(ctx);
     setContentView(R.layout.activity_admin_change_pwd);
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     
     actionBar.setTitle("Changement du mot de passe");

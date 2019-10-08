@@ -14,9 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-////test
+import android.support.v7.app.AppCompatActivity;
 
-public class AdminClubActivity extends Activity
+public class AdminClubActivity extends AppCompatActivity
 {
 
   protected Button btnPwd;
@@ -49,7 +49,8 @@ public class AdminClubActivity extends Activity
     super.onResume();
     adminclub = Global.getCurrentAdminClub(ctx);
     setContentView(R.layout.activity_admin_club);
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_settings_white_24dp);
     actionBar.setTitle("Administration du club");

@@ -34,8 +34,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
-public class AdminChangeInfoActivity extends Activity
+public class AdminChangeInfoActivity extends AppCompatActivity
 {
 
   String mode;
@@ -105,7 +106,8 @@ public class AdminChangeInfoActivity extends Activity
       mode = i.getStringExtra("mode");
     }
     
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_info_white_24dp);
     actionBar.setTitle("Gestion des informations / evenements");

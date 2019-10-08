@@ -53,7 +53,7 @@ public class Global
   //private static Club current_user_club;
   
   static final String SPORTTEAM_VERSION        = "1.0";//= 1200000;
-  static final int TIME_MN_FOR_NOTIF_CHECK     = 10;
+  static final int TIME_MN_FOR_NOTIF_CHECK     = 2;
   static final int TIME_MS_FOR_NOTIF_CHECK     = 1000*60*TIME_MN_FOR_NOTIF_CHECK;
   static final int NOTIF_OFFSET_CONVOC         = 0;
   static final int NOTIF_OFFSET_RESULT         = 100000000;

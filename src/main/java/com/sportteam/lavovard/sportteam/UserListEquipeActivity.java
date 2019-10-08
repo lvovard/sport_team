@@ -25,8 +25,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.support.v7.app.AppCompatActivity;
 
-public class UserListEquipeActivity extends Activity
+public class UserListEquipeActivity extends AppCompatActivity
 {
   
   static List<String> listeequipe = new ArrayList<String>();
@@ -57,7 +58,8 @@ public class UserListEquipeActivity extends Activity
     layout = (LinearLayout) findViewById(R.id.linlayout);
     layout.setOrientation(LinearLayout.VERTICAL);
     
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_group_white_24dp);
     actionBar.setTitle(userclub.nom+"/"+Global.getCurrentCat(ctx));

@@ -34,8 +34,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
-public class AdminChangeResultatActivity extends Activity
+public class AdminChangeResultatActivity extends AppCompatActivity
 {
   
   String mode;
@@ -137,7 +138,8 @@ public class AdminChangeResultatActivity extends Activity
       mode = i.getStringExtra("mode");
     }
     
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_looks_icon_two_black_24dp);
     actionBar.setTitle("Gestion des resultats");

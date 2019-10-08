@@ -14,8 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
 
-public class AdminWayToAddClubActivity extends Activity
+public class AdminWayToAddClubActivity extends AppCompatActivity
 {
   
   protected Button btnExisting;
@@ -43,7 +44,8 @@ public class AdminWayToAddClubActivity extends Activity
     setContentView(R.layout.activity_admin_way_to_add_club);
     getWindow().setBackgroundDrawableResource(R.drawable.gazon);
     
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_settings_white_24dp);
     actionBar.setTitle("SportTeam");

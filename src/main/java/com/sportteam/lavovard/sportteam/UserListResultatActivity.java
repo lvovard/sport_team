@@ -27,9 +27,10 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
 
 
-public class UserListResultatActivity extends Activity 
+public class UserListResultatActivity extends AppCompatActivity
 {
   
   static int resultselected;
@@ -80,7 +81,8 @@ public class UserListResultatActivity extends Activity
     userclub = Global.getCurrentUserClub(ctx);
     
     setTitle(userclub.nom+"/"+Global.getCurrentEquipe(ctx)+"\r\n"+Global.getCurrentChoice(ctx));
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_looks_icon_two_black_24dp);
     actionBar.setTitle(userclub.nom+"/"+Global.getCurrentEquipe(ctx));

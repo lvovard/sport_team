@@ -27,8 +27,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
 
-public class UserListConvocationActivity extends Activity {
+public class UserListConvocationActivity extends AppCompatActivity {
   
   static int convocselected;
   public static List<Convocation> convoclist;
@@ -83,7 +84,8 @@ public class UserListConvocationActivity extends Activity {
     userclub = Global.getCurrentUserClub(ctx);
     
     setTitle(userclub.nom+"/"+Global.getCurrentEquipe(ctx)+"\r\n"+Global.getCurrentChoice(ctx));
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_event_white_24dp);
     actionBar.setTitle(userclub.nom+"/"+ " "+Global.getCurrentEquipe(ctx));

@@ -14,8 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
 
-public class AdminCatActivity extends Activity
+public class AdminCatActivity extends AppCompatActivity
 {
   protected Button btnAddCat;
   protected Button btnModifyCat;
@@ -43,7 +44,8 @@ public class AdminCatActivity extends Activity
     super.onResume();
     setContentView(R.layout.activity_admin_cat);
     adminclub = Global.getCurrentAdminClub(ctx);
-    ActionBar actionBar = getActionBar();
+    //ActionBar actionBar = getActionBar();
+	android.support.v7.app.ActionBar actionBar =getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setIcon(R.drawable.ic_group_white_24dp);
     actionBar.setTitle("Gestion des catégories / équipes");
