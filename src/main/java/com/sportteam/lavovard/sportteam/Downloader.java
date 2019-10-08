@@ -1237,7 +1237,7 @@ abstract class insertCat extends AsyncTask<String, Void, Boolean>
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      Log.i("myApp", result);
+      Log.i("myApp ", result);
     } catch (Exception ex) {
       Log.i("myApp", "error="+ex);
     }
