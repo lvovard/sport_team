@@ -3,6 +3,7 @@ package com.sportteam.lavovard.sportteam;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 public class NotifBootBroadcastReceiver extends BroadcastReceiver {
   @Override
@@ -28,7 +29,13 @@ public class NotifBootBroadcastReceiver extends BroadcastReceiver {
 
     ///
       Intent startServiceIntent = new Intent(context, NotifMyTestService.class);
-      context.startService(startServiceIntent);
+      if (Build.VERSION.SDK_INT < 26)
+      {
+          context.startService(startServiceIntent);
+      }
+      else
+      {
+          context.startForegroundService(startServiceIntent);
+      }
   }
-
 }

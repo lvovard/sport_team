@@ -63,7 +63,8 @@ public class Global
   static final int NOTIF_OFFSET_CLUB_PWD_ADMIN = 500000000;
   
   //static final String URL_SQL_DATABASE = "http://www.sportteam.890m.com";
-  static final String URL_SQL_DATABASE = "https://vovardlaurent.000webhostapp.com";
+  //static final String URL_SQL_DATABASE = "https://vovardlaurent.000webhostapp.com";
+  static final String URL_SQL_DATABASE = "http://sportteam.sportsontheweb.net";
   
   //add club with user permission
   static boolean ConnexionAddUserClub(Context ctx,String sport,String dep,String club,String clubid,String cat,String pwduser)
@@ -85,7 +86,7 @@ public class Global
       Cursor c=db.rawQuery("SELECT mode,cat FROM connexion WHERE clubid='"+clubid+"' ", null);
       if(c.getCount()==0)
       {
-        db.execSQL("INSERT INTO connexion VALUES('"+sport+"','"+dep+"','"+club+"','"+clubid+"','"+cattoadd+"','"+pwduser+"','','user','nodate','nodate','nodate','nodate');");
+        db.execSQL("INSERT INTO connexion VALUES('"+sport+"','"+dep+"','"+club+"','"+clubid+"','"+cattoadd+"','"+pwduser+"','','user','1900','1900','1900','1900');");
         db.close();
         return true;
       }
@@ -358,7 +359,7 @@ public class Global
       Cursor c=db.rawQuery("SELECT mode FROM connexion WHERE clubid='"+clubid+"' ", null);
       if(c.getCount()==0)
       {
-        db.execSQL("INSERT INTO connexion VALUES('"+sport+"','"+dep+"','"+club+"','"+clubid+"','','','"+pwdadmin+"','admin','nodate','nodate','nodate','nodate');");
+        db.execSQL("INSERT INTO connexion VALUES('"+sport+"','"+dep+"','"+club+"','"+clubid+"','','','"+pwdadmin+"','admin','1900','1900','1900','1900');");
         db.close();
         return true;
       }
@@ -831,7 +832,7 @@ public class Global
           else
           {
             //if mode = all or admin, update mode from all/admin to admin
-            db.execSQL("UPDATE connexion SET mode='"+newmode+"',cat='',password='',dateinformation='nodate',dateresultat='nodate',dateconvocation='nodate',datecategorie='nodate' WHERE clubid='"+c.getString(0)+"' ");
+            db.execSQL("UPDATE connexion SET mode='"+newmode+"',cat='',password='',dateinformation='1900',dateresultat='1900',dateconvocation='1900',datecategorie='1900' WHERE clubid='"+c.getString(0)+"' ");
           }
           db.close();
           return true;

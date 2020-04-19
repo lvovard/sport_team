@@ -36,6 +36,7 @@ abstract class getPassword extends AsyncTask<String, Void, String>
       //data += "&emailaddress=" + URLEncoder.encode(emailAddress, "UTF-8");
       link = Global.URL_SQL_DATABASE+"/getpwd.php?id_club="+param[0]; //+ data
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -85,11 +86,12 @@ abstract class GetSport extends AsyncTask<Void, Void, List<String>> {
       //data += "&emailaddress=" + URLEncoder.encode(emailAddress, "UTF-8");
       link = Global.URL_SQL_DATABASE+"/getsport.php"; //+ data
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      ////log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) 
     {
       Log.i("myApp", "error="+ex);
@@ -136,14 +138,15 @@ abstract class GetCatBySport extends AsyncTask<String, Void, List<String>> {
     {
       link = Global.URL_SQL_DATABASE+"/getcatbysport.php?sport="+URLEncoder.encode(sport[0], "UTF-8"); //+ data
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      ////log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) 
     {
-      ////log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if ( (result != null) && (!result.contains("No sport found")) )
     {
@@ -192,14 +195,15 @@ abstract class GetDep extends AsyncTask<String, Void, List<String>>
       //data += "&emailaddress=" + URLEncoder.encode(emailAddress, "UTF-8");
       link = Global.URL_SQL_DATABASE+"/getdep.php?sport="+URLEncoder.encode(sport[0], "UTF-8"); //+ data
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      ////log.i("myApp", "res1="+result);
+      Log.i("myApp", "res1="+result);
     } catch (Exception ex) 
     {
-      ////log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -246,13 +250,14 @@ abstract class GetClub extends AsyncTask<String, Void, JSONArray>
       //data += "&emailaddress=" + URLEncoder.encode(emailAddress, "UTF-8");
       link = Global.URL_SQL_DATABASE+"/getclub.php?sport="+URLEncoder.encode(param[0], "UTF-8")+"&dep="+URLEncoder.encode(dep, "UTF-8"); //+ data
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      ////log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      ////log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -287,13 +292,14 @@ abstract class GetCat extends AsyncTask<String, Void, List<Categorie>>
       //data += "&emailaddress=" + URLEncoder.encode(emailAddress, "UTF-8");
       link = Global.URL_SQL_DATABASE+"/getcat.php?club="+param[0]; //+ data
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      ////log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      ////log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -337,14 +343,15 @@ abstract class GetNbTeam extends AsyncTask<String, Void, Integer>
     {
       link = Global.URL_SQL_DATABASE+"/getcat.php?club="+club_id; //+ data
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      ////log.i("myApp", result);
+      Log.i("myApp", result);
     } 
     catch (Exception ex) 
     {
-      ////log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -398,15 +405,15 @@ abstract class GetConvoc extends AsyncTask<String, Void, List<Convocation>>
     try 
     {
       link = Global.URL_SQL_DATABASE+"/getconvoc.php?id_equipe="+id_equipe+"&id_club="+param[2]; //+ data
-      //log.i("myApp", "link "+link);
+      Log.i("myApp", "link "+link);
       URL url = new URL(link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -472,6 +479,7 @@ abstract class insertConvoc extends AsyncTask<Convocation, Void, Boolean>
       link = Global.URL_SQL_DATABASE+"/insertconvoc.php?id_equipe="+c.equipe+"&date_match="+URLEncoder.encode(c.date, "UTF-8")+"&lieu_match="+URLEncoder.encode(c.lieu_match, "UTF-8")+"&heure_match="+c.heure_match+"&lieu_rdv="+URLEncoder.encode(c.lieu_rdv, "UTF-8")+"&heure_rdv="+c.heure_rdv+"&adversaire="+URLEncoder.encode(c.adversaire, "UTF-8")+"&liste_joueurs="+URLEncoder.encode(TextUtils.join(";", c.listejoueurs), "UTF-8")+"&liste_dirigeants="+URLEncoder.encode(TextUtils.join(";", c.listedirigeants), "UTF-8")+"&state="+c.state+"&id_club="+c.id_club+"&lieu="+URLEncoder.encode(c.lieu, "UTF-8")+"&competition="+URLEncoder.encode(c.competition, "UTF-8"); 
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -506,6 +514,7 @@ abstract class updateConvoc extends AsyncTask<Convocation, Void, Boolean>
       link = Global.URL_SQL_DATABASE+"/updateconvoc.php?id_equipe="+c.equipe+"&date_match="+URLEncoder.encode(c.date, "UTF-8")+"&lieu_match="+URLEncoder.encode(c.lieu_match, "UTF-8")+"&heure_match="+c.heure_match+"&lieu_rdv="+URLEncoder.encode(c.lieu_rdv, "UTF-8")+"&heure_rdv="+c.heure_rdv+"&adversaire="+URLEncoder.encode(c.adversaire, "UTF-8")+"&liste_joueurs="+URLEncoder.encode(TextUtils.join(";", c.listejoueurs), "UTF-8")+"&liste_dirigeants="+URLEncoder.encode(TextUtils.join(";", c.listedirigeants), "UTF-8")+"&state="+c.state+"&id_club="+c.id_club+"&lieu="+URLEncoder.encode(c.lieu, "UTF-8")+"&competition="+URLEncoder.encode(c.competition, "UTF-8")+"&id_convoc="+c.id_convoc; 
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -540,6 +549,7 @@ abstract class removeConvoc extends AsyncTask<String, Void, Boolean>
       link = Global.URL_SQL_DATABASE+"/deleteconvoc.php?id_convoc="+id_conv; 
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -573,7 +583,7 @@ abstract class insertResultat extends AsyncTask<Resultat, Void, Boolean>
     {
       link = Global.URL_SQL_DATABASE+"/insertresult.php?date_match="+URLEncoder.encode(r.date_match, "UTF-8")+"&adversaire="+URLEncoder.encode(r.adversaire, "UTF-8")+"&id_equipe="+r.id_equipe+"&lieu="+URLEncoder.encode(r.lieu, "UTF-8")+"&score_equipe="+r.score_equipe+"&score_adversaire="+r.score_adversaire+"&state="+r.state+"&competition="+URLEncoder.encode(r.competition, "UTF-8")+"&id_club="+r.id_club+"&detail="+URLEncoder.encode(r.detail.replace("\n", "<br/>"), "UTF-8"); 
       link = link.replace(" ", "%20");
-      //log.i("myApp", link);
+      Log.i("myApp", link);
       URL url = new URL(link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -609,6 +619,7 @@ abstract class updateResultat extends AsyncTask<Resultat, Void, Boolean>
       link = Global.URL_SQL_DATABASE+"/updateresult.php?date_match="+URLEncoder.encode(r.date_match, "UTF-8")+"&adversaire="+URLEncoder.encode(r.adversaire, "UTF-8")+"&id_equipe="+r.id_equipe+"&lieu="+URLEncoder.encode(r.lieu, "UTF-8")+"&score_equipe="+r.score_equipe+"&score_adversaire="+r.score_adversaire+"&state="+r.state+"&competition="+URLEncoder.encode(r.competition, "UTF-8")+"&id_club="+r.id_club+"&id_resultat="+r.id_resultat+"&detail="+URLEncoder.encode(r.detail.replace("\n", "<br/>"), "UTF-8"); 
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -643,6 +654,7 @@ abstract class removeResultat extends AsyncTask<String, Void, Boolean>
       link = Global.URL_SQL_DATABASE+"/deleteresult.php?id_resultat="+id_result; 
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -676,7 +688,7 @@ abstract class insertInfo extends AsyncTask<Info, Void, Boolean>
     {
       link = Global.URL_SQL_DATABASE+"/insertinfo.php?id_equipe="+info.id_equipe+"&objet="+URLEncoder.encode(info.objet, "UTF-8")+"&message="+URLEncoder.encode(info.message.replace("\n","<br/>"), "UTF-8")+"&state="+info.state+"&id_club="+info.id_club+"&date_info="+URLEncoder.encode(info.date_info, "UTF-8")+"&heure_info="+info.heure_info; 
       link = link.replace(" ", "%20");
-      //log.i("myApp", link);
+      Log.i("myApp", link);
       URL url = new URL(link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -712,6 +724,7 @@ abstract class updateInfo extends AsyncTask<Info, Void, Boolean>
       link = Global.URL_SQL_DATABASE+"/updateinfo.php?id_equipe="+info.id_equipe+"&objet="+URLEncoder.encode(info.objet, "UTF-8")+"&message="+URLEncoder.encode(info.message.replace("\n","<br/>"), "UTF-8")+"&state="+info.state+"&id_club="+info.id_club+"&id_info="+info.id_info+"&date_info="+URLEncoder.encode(info.date_info, "UTF-8")+"&heure_info="+info.heure_info; 
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -746,6 +759,7 @@ abstract class removeInfo extends AsyncTask<String, Void, Boolean>
       link = Global.URL_SQL_DATABASE+"/deleteinfo.php?id_info="+id_info; 
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -780,7 +794,7 @@ abstract class getPerson extends AsyncTask<String, Void, List<Person>>
     try 
     {
       link = Global.URL_SQL_DATABASE+"/getjoueur.php?id_club="+id_club;
-      //log.i("myApp", "link "+link);
+      Log.i("myApp", link);
       URL url = new URL(link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -837,7 +851,7 @@ abstract class GetResultat extends AsyncTask<String, Void, List<Resultat>>
     try 
     {
       link = Global.URL_SQL_DATABASE+"/getresult.php?id_equipe="+id_equipe+"&id_club="+param[2]; //+ data
-      //Log.i("myApp", "link "+link);
+      Log.i("myApp", link);
       URL url = new URL(link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -896,7 +910,7 @@ abstract class GetInfo extends AsyncTask<String, Void, List<Info>>
     try 
     {
       link = Global.URL_SQL_DATABASE+"/getinfo.php?id_equipe="+param[0]+"&id_club="+param[2]; //+ data
-      //log.i("myApp", "link "+link);
+      Log.i("myApp", link);
       URL url = new URL(link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -951,18 +965,19 @@ abstract class GetLastInfoDate extends AsyncTask<String, Void, List<Info>>
     try 
     {
       link = Global.URL_SQL_DATABASE+"/getlastinfodate.php?date_record="+date+"&id_club="+club_id;
-      ////log.i("myApp", "link="+link);
+      Log.i("myApp", link);
+      Log.i("myApp", "----------------------------------------test123");
       link = link.replace(" ", "%20");
       URL url = new URL(link);
       //log.i("myApp", "link="+link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } 
     catch (Exception ex) 
     {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if ( (result != null) && (! result.contains("No info found")) )
     {
@@ -1005,18 +1020,18 @@ abstract class GetLastResultatDate extends AsyncTask<String, Void, List<Resultat
     try 
     {
       link = Global.URL_SQL_DATABASE+"/getlastresultdate.php?date_record="+date+"&id_club="+club_id;
-      ////log.i("myApp", "link="+link);
+      Log.i("myApp", link);
       link = link.replace(" ", "%20");
       URL url = new URL(link);
       //log.i("myApp", "link="+link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } 
     catch (Exception ex) 
     {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if ( (result != null) && (! result.contains("No resultat found")) )
     {
@@ -1062,18 +1077,18 @@ abstract class GetLastConvocationDate extends AsyncTask<String, Void, List<Convo
     try 
     {
       link = Global.URL_SQL_DATABASE+"/getlastconvocdate.php?date_record="+date+"&id_club="+club_id;
-      ////log.i("myApp", "link="+link);
+      Log.i("myApp", link);
       link = link.replace(" ", "%20");
       URL url = new URL(link);
       //log.i("myApp", "link="+link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } 
     catch (Exception ex) 
     {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if ( (result != null) && (! result.contains("No convocation found")) )
     {
@@ -1136,15 +1151,15 @@ abstract class GetLastCatDate extends AsyncTask<String, Void, List<Categorie>>
       link = Global.URL_SQL_DATABASE+"/getlastcatdate.php?date_record="+date+"&id_club="+club_id;
       link = link.replace(" ", "%20");
       URL url = new URL(link);
-      //log.i("myApp", "link="+link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } 
     catch (Exception ex) 
     {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if ( (result != null) && (! result.contains("No categorie found")) )
     {
@@ -1197,13 +1212,14 @@ abstract class createClub extends AsyncTask<String, Void, Integer>
       link = Global.URL_SQL_DATABASE+"/insertclub.php?sport="+URLEncoder.encode(sport, "UTF-8")+"&dep="+URLEncoder.encode(dep, "UTF-8")+"&club="+URLEncoder.encode(club, "UTF-8")+"&email="+URLEncoder.encode(email, "UTF-8")+"&pwd="+URLEncoder.encode(pwd_user, "UTF-8")+"&pwd_admin="+URLEncoder.encode(pwd_admin, "UTF-8"); //+ data
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
       result = bufferedReader.readLine();
-      //log.i("myApp", result);
+      Log.i("myApp", result);
     } catch (Exception ex) {
-      //log.i("myApp", "error="+ex);
+      Log.i("myApp", "error="+ex);
     }
     if (result != null)
     {
@@ -1232,6 +1248,7 @@ abstract class insertCat extends AsyncTask<String, Void, Boolean>
     {
       link = Global.URL_SQL_DATABASE+"/insertcat.php?id_club="+id_club+"&nom="+URLEncoder.encode(cat, "UTF-8")+"&nb_equipe="+nb_equipe; //+ data
       link = link.replace(" ", "%20");
+      Log.i("myApp", link);
       URL url = new URL(link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -1271,6 +1288,7 @@ abstract class insertPerson extends AsyncTask<String, Void, Boolean>
       link = Global.URL_SQL_DATABASE+"/insertjoueur.php?nom="+URLEncoder.encode(nom, "UTF-8")+"&prenom="+URLEncoder.encode(prenom, "UTF-8")+"&role="+URLEncoder.encode(role, "UTF-8")+"&id_cat="+id_cat+"&id_club="+id_club;
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -1305,6 +1323,7 @@ abstract class removePerson extends AsyncTask<String, Void, Boolean>
       link = Global.URL_SQL_DATABASE+"/deletejoueur.php?id_joueur="+id_joueur;
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -1340,6 +1359,7 @@ abstract class removeCat extends AsyncTask<String, Void, Boolean>
       link = Global.URL_SQL_DATABASE+"/deletecat.php?id_cat="+id_cat;
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -1375,6 +1395,7 @@ abstract class modifyCat extends AsyncTask<String, Void, Boolean>
       link = Global.URL_SQL_DATABASE+"/updatecat.php?id_cat="+id_cat+"&nb_equipe="+nb_equipe;
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -1424,6 +1445,7 @@ abstract class updatePwd extends AsyncTask<String, Void, Boolean>
       
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -1434,7 +1456,7 @@ abstract class updatePwd extends AsyncTask<String, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("PASS") )
+      if ( result.contains("update passed") )
       {
         return true;
       }
@@ -1457,6 +1479,7 @@ abstract class insertCrash extends AsyncTask<String, Void, Boolean>
       link = Global.URL_SQL_DATABASE+"/insertcrash.php?content="+URLEncoder.encode(param[0], "UTF-8"); 
       link = link.replace(" ", "%20");
       URL url = new URL(link);
+      Log.i("myApp", link);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
       bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
