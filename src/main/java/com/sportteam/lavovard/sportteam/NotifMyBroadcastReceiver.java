@@ -92,6 +92,7 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
     {
       if (listcat.size() > 0)
       {
+        Log.i("myApp", "new cat detected...");
         //update db with new date
         Global.ConnexionUserUpdateDateCategorie(mcontext, club.id_club, listcat.get(0).date_record);
         for(Categorie c:listcat)
@@ -161,6 +162,7 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
     {
       if (listconv.size() > 0)
       {
+        Log.i("myApp", "new convocation detected...");
         //update db with new date
         Global.ConnexionUserUpdateDateConvocation(mContext, club.id_club, listconv.get(0).date_record);
         //sort convoc list by dates
@@ -240,6 +242,7 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
     {
         if (listresult.size() > 0)
         {
+          Log.i("myApp", "new result detected....");
           //update db with new date
           Global.ConnexionUserUpdateDateResultat(mContext, club.id_club, listresult.get(0).date_record);
           //sort result list by dates
@@ -315,6 +318,7 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
     {
       if (listinfo.size() > 0)
       {
+        Log.i("myApp", "new info detected...");
         //update db with new date
         Global.ConnexionUserUpdateDateInformation(mContext, club.id_club, listinfo.get(0).date_record);
         //sort result list by dates
@@ -435,6 +439,7 @@ public class NotifMyBroadcastReceiver extends BroadcastReceiver {
         //remove data from db table
         if (password_user_changed)
         {
+          Log.i("myApp", "new user passwd detected...");
           //save cat before remove them
           List<Categorie> listcat = Global.ConnexionGetCat(mContext,club.id_club);
           //remove cat from db

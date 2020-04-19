@@ -351,35 +351,35 @@ public class BothModeAddClubActivity extends AppCompatActivity {
   			  if (password.contentEquals(getUserPassword(club)))
   			  {
   			    //add club in connection db
-  			    Global.ConnexionAddUserClub(ctx, sport, departement, club, getIdClub(club), "", password);
-            GetLastInfoDateMain taskinfo = new GetLastInfoDateMain(sport,club,getIdClub(club));
-            taskinfo.execute(getIdClub(club),"nodate");
-            GetLastResultatDateMain taskresultat = new GetLastResultatDateMain(sport,club,getIdClub(club));
-            taskresultat.execute(getIdClub(club),"nodate");
-            GetLastConvocationDateMain taskconvocation = new GetLastConvocationDateMain(sport,club,getIdClub(club));
-            taskconvocation.execute(getIdClub(club),"nodate");
-            GetLastCatDateMain taskcat = new GetLastCatDateMain(departement,sport,club,getIdClub(club));
-            taskcat.execute(getIdClub(club),"nodate");
+  			      Global.ConnexionAddUserClub(ctx, sport, departement, club, getIdClub(club), "", password);
+                  GetLastInfoDateMain taskinfo = new GetLastInfoDateMain(sport,club,getIdClub(club));
+                  taskinfo.execute(getIdClub(club),"1900");
+                  GetLastResultatDateMain taskresultat = new GetLastResultatDateMain(sport,club,getIdClub(club));
+                  taskresultat.execute(getIdClub(club),"1900");
+                  GetLastConvocationDateMain taskconvocation = new GetLastConvocationDateMain(sport,club,getIdClub(club));
+                  taskconvocation.execute(getIdClub(club),"1900");
+                  GetLastCatDateMain taskcat = new GetLastCatDateMain(departement,sport,club,getIdClub(club));
+                  taskcat.execute(getIdClub(club),"1900");
   			    
-  			    //for each cat to record
-  			    //put it in the connection file with some checks...
-  			    for (String categorie:catlisttorecord)
-  			    {
-  			      if (Global.ConnexionUserCatExist(ctx, getIdClub(club), categorie))
+  			      //for each cat to record
+  			      //put it in the connection file with some checks...
+  			      for (String categorie:catlisttorecord)
   			      {
-  			        Toast.makeText(ctx,sport+"-"+departement+"-"+club+"-"+categorie+" existe déjà", Toast.LENGTH_SHORT).show();
-  			        continue;
+  			        if (Global.ConnexionUserCatExist(ctx, getIdClub(club), categorie))
+  			        {
+  			          Toast.makeText(ctx,sport+"-"+departement+"-"+club+"-"+categorie+" existe déjà", Toast.LENGTH_SHORT).show();
+  			          continue;
+  			        }
+  			        else
+  			        {
+  			          Global.ConnexionAddUserCatWithPwd(ctx, getIdClub(club), categorie,password);
+  			          Toast.makeText(ctx,sport+"-"+departement+"-"+club+"-"+categorie+" a été ajoutée", Toast.LENGTH_SHORT).show();
+  			        }
   			      }
-  			      else
-  			      {
-  			        Global.ConnexionAddUserCatWithPwd(ctx, getIdClub(club), categorie,password);
-  			        Toast.makeText(ctx,sport+"-"+departement+"-"+club+"-"+categorie+" a été ajoutée", Toast.LENGTH_SHORT).show();
-  			      }
-  			    }
-  			    Global.ConnexionPrintDataBase(ctx);
-            Intent intent = new Intent(ctx, BothModeListClubActivity.class);
-            intent.putExtra("mode", "user");
-            startActivity(intent);
+  			      Global.ConnexionPrintDataBase(ctx);
+                  Intent intent = new Intent(ctx, BothModeListClubActivity.class);
+                  intent.putExtra("mode", "user");
+                  startActivity(intent);
   			  }
   			  else
   			  {
@@ -571,7 +571,7 @@ public class BothModeAddClubActivity extends AppCompatActivity {
        }
        else
        {
-         Global.ConnexionUserUpdateDateInformation(ctx, clubid, "nodate");
+         Global.ConnexionUserUpdateDateInformation(ctx, clubid, "1900");
        }
      }
    }
@@ -602,7 +602,7 @@ public class BothModeAddClubActivity extends AppCompatActivity {
        }
        else
        {
-         Global.ConnexionUserUpdateDateResultat(ctx, clubid, "nodate");
+         Global.ConnexionUserUpdateDateResultat(ctx, clubid, "1900");
        }
      }
    }
@@ -633,7 +633,7 @@ public class BothModeAddClubActivity extends AppCompatActivity {
        }
        else
        {
-         Global.ConnexionUserUpdateDateConvocation(ctx, clubid, "nodate");
+         Global.ConnexionUserUpdateDateConvocation(ctx, clubid, "1900");
        }
      }
    }
@@ -666,7 +666,7 @@ public class BothModeAddClubActivity extends AppCompatActivity {
        }
        else
        {
-         Global.ConnexionUserUpdateDateCategorie(ctx, clubid, "nodate");
+         Global.ConnexionUserUpdateDateCategorie(ctx, clubid, "1900");
        }
        
      }

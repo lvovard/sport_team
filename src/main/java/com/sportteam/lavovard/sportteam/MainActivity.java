@@ -20,7 +20,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ScaleDrawable;
-import android.os.Build;
+
+
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -110,7 +111,7 @@ public class MainActivity extends Activity {
       //log.i("myApp", "Reading alarm.txt ..." );
       while ((strLine = objBufferReader.readLine()) != null) 
       {
-        if (strLine.contains("ALARM=STARTEDDD"))
+        if (strLine.contains("ALARM=STARTEDD"))
         {
           start_alarm=false;
           break;
