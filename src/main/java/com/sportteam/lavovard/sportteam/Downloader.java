@@ -490,7 +490,7 @@ abstract class insertConvoc extends AsyncTask<Convocation, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("INSERT INTO convocation") )
+      if ( result.contains("insert passed") )
       {
         return true;
       }
@@ -525,7 +525,7 @@ abstract class updateConvoc extends AsyncTask<Convocation, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("UPDATE convocation") )
+      if ( result.contains("update passed") )
       {
         return true;
       }
@@ -560,7 +560,7 @@ abstract class removeConvoc extends AsyncTask<String, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("PASS") )
+      if ( result.contains("delete passed") )
       {
         return true;
       }
@@ -595,7 +595,7 @@ abstract class insertResultat extends AsyncTask<Resultat, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("INSERT INTO resultat") )
+      if ( result.contains("insert passed") )
       {
         return true;
       }
@@ -630,7 +630,7 @@ abstract class updateResultat extends AsyncTask<Resultat, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("UPDATE resultat SET") )
+      if ( result.contains("update passed") )
       {
         return true;
       }
@@ -700,7 +700,7 @@ abstract class insertInfo extends AsyncTask<Info, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("INSERT INTO infoclub") )
+      if ( result.contains("insert passed") )
       {
         return true;
       }
@@ -735,7 +735,7 @@ abstract class updateInfo extends AsyncTask<Info, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("UPDATE infoclub SET") )
+      if ( result.contains("update passed") )
       {
         return true;
       }
@@ -770,7 +770,7 @@ abstract class removeInfo extends AsyncTask<String, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("PASS") )
+      if ( result.contains("delete passed") )
       {
         return true;
       }
@@ -966,7 +966,6 @@ abstract class GetLastInfoDate extends AsyncTask<String, Void, List<Info>>
     {
       link = Global.URL_SQL_DATABASE+"/getlastinfodate.php?date_record="+date+"&id_club="+club_id;
       Log.i("myApp", link);
-      Log.i("myApp", "----------------------------------------test123");
       link = link.replace(" ", "%20");
       URL url = new URL(link);
       //log.i("myApp", "link="+link);
@@ -1260,7 +1259,7 @@ abstract class insertCat extends AsyncTask<String, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("PASS") )
+      if ( result.contains("insert passed") )
       {
         return true;
       }
@@ -1299,7 +1298,7 @@ abstract class insertPerson extends AsyncTask<String, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("PASS") )
+      if ( result.contains("insert passed") )
       {
         return true;
       }
@@ -1334,7 +1333,7 @@ abstract class removePerson extends AsyncTask<String, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("PASS") )
+      if ( result.contains("delete passed") )
       {
         return true;
       }
@@ -1370,7 +1369,7 @@ abstract class removeCat extends AsyncTask<String, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("PASS") )
+      if ( result.contains("delete passed") )
       {
         return true;
       }
@@ -1406,7 +1405,7 @@ abstract class modifyCat extends AsyncTask<String, Void, Boolean>
     }
     if (result != null)
     {
-      if ( result.contains("PASS") )
+      if ( result.contains("update passed") )
       {
         return true;
       }
